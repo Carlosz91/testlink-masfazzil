@@ -11,3 +11,4 @@ Thumbs.db
 
 # Installer artifacts
 install_DO_NOT_USE/
+config_db.inc.php
