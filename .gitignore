@@ -1,0 +1,13 @@
+# TestLink runtime / build artifacts
+gui/templates_c/
+logs/
+upload_area/
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+Thumbs.db
+
+# Installer artifacts
+install_DO_NOT_USE/

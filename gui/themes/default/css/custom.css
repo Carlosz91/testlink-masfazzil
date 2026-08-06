@@ -1,0 +1,392 @@
+/*
+TestLink Open Source Project - http://testlink.sourceforge.net/
+@filesource custom.css
+*/
+/* ***** GLOBAL HTML ***************************************************************** */
+body, body.testlink {
+	background:  	#EEE;
+	font-family: 	Arial, sans-serif, Verdana,'Trebuchet MS' ;
+	font-size: 		small;
+}
+
+/* Navbar: fondo azul completo (gana al !important blanco de testlink.css) */
+body.navigationBar {
+	background-color: #436bb3 !important;
+}
+
+body.landing {
+	background:  	#059; /* 059 */
+	font-family: 	'Trebuchet MS', Arial, Verdana, sans-serif;
+	font-size: 		small;
+
+}
+a:not(.btn-primary) {
+	text-decoration: none;
+	/*color: white;*/
+}
+
+.menu_bar > a{
+	color: white;
+	padding: 4px 6px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+}
+
+.menu_bar > a:hover{
+	color: white;
+	background-color: #5a86d6;
+}
+
+/*.menu_bar > a:focus{*/
+	/*color: white;*/
+	/*background-color: #5a86d6;*/
+/*}*/
+.menu_title > a{
+	padding-left: 5px;
+}
+
+.vertical_menu > div > a{
+	font-size: 14px !important;
+}
+
+.chosen-container{
+	font-size: 12px !important;
+	margin-right: 0px !important;
+	min-width: 200px;
+	max-width: 220px;
+}
+.list-group{
+	padding-left: 0px !important;
+}
+.x-panel{
+	/*width: 98%*/
+}
+
+table.smallGrey {
+	background: white;
+	border: 1px solid #e2e6e6;
+	font-size: 12px;
+	margin-bottom: 10px;
+	margin-right: 0px;
+}
+/******************************************************** */
+select[name="tplan_id"] {
+	width: 70%;
+}
+
+select[name="testproject"] {
+	font-size: 90%!important;
+	background: white;
+}
+form[name="productForm"]{
+	color: white;
+}
+
+
+/* paneles*/
+.x-panel-header {
+	color: white!important;
+	font-size: 13px !important;
+	font-family: arial,sans-serif,verdana,Tahoma !important;
+	background-image: none!important;
+	background: #3b73af!important;
+	font-weight: normal!important;
+}
+
+.qaname {
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+    letter-spacing: 1px;
+    line-height: 1;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+/* Wordmark debajo de la barra azul: Quality / Assurance */
+.qa_line1, .qa_line2 {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: #014ecb;
+    line-height: 1.1;
+}
+.qa_line1 {
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+.qa_line2 {
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+div.menu_bar {
+	background: #436bb3;
+	background-image: url('');
+	border-style: groove;
+	border-width: thin;
+	padding: 0;
+	margin: 0px 3px;
+}
+.icoMenu{
+	margin-bottom: -4px;
+}
+
+/* ***** Execution & Results ********************************************************* */
+
+div.pending {
+	color: 			white;
+	margin: 		8px;
+	padding: 		6px;
+	text-align: 	center;
+	background:		#FF8C11;
+}
+
+
+/* ***** execution tree coloring ************************* */
+span.pending
+{
+	color:				black;
+	padding:			3px;
+}
+
+
+span.light_pending {
+	background: 		#7CAFDD;
+}
+
+
+/* ***** render test result status (coloring background) ************************* */
+
+.pending {
+	color: 			white;
+	background:		#FF8C11;
+}
+
+/* ***** render test result status (coloring text) ************************* */
+
+.pending_text {
+	color:       #FF8C11;
+	font-weight: bold;
+}
+
+
+span.light_passed {
+	background:		#A8D973;/*#52D681;cambio de color #D5EED5;  green */
+}
+
+span.light_failed {
+	background: 		#FF6666;/*#EC7063;/* cambio de color #EED5D5;  red */
+}
+
+span.light_blocked {
+	background: 		#b36ee5;/*#B989DC;/*#F0E427;/* #4288CC;  cambio de color #D5D5EE; blue */
+}
+
+span.light_cancelled {
+	background: #b1b1b1;
+}
+
+span.light_not_run {
+	background: 		#e2e6e6;/*#BDC3C7; cambio de color #E8E8E8;  grey */
+}
+
+.cancelled {
+	color: white;
+	background: #b1b1b1;
+}
+
+
+
+
+div.login_title {
+	text-align: 	center;
+	/*width: 			80%;*/
+	background: 	#CDE;
+	margin: 		0px;
+	padding: 		5px 0px;
+	font-weight : 	bold;
+	letter-spacing: 2px;
+}
+
+div.menu_title {
+	margin-left:	135px;
+	margin-right:20px;
+	padding:		3px;
+	height:22px;
+}
+
+
+
+div.passed, .passed {
+	color: black;
+	background:		#A8D973; /* darkgreen */
+}
+
+div.failed, .failed {
+	background:		#FF6666; /* firebrick (red) */
+}
+
+div.blocked, .blocked {
+	background:		#a161d0; /* darkblue */
+}
+
+div.not_run, .not_run {
+	background:		#e2e6e6;
+}
+
+.x-panel-header > span > a {
+	color: white;
+}
+
+
+div.pending, .pending {
+	background:		#7CAFDD;
+}
+
+td[id^='inline_img_container_'] > img {
+	max-width: 850px;
+}
+.tc > tbody > tr > td > ul > li > img {
+	max-width: 850px !important;
+}
+
+/* ============ MASFAZZIL GLOBAL BRANDING ============ */
+
+/* --- Encabezados de página (h1 / títulos) --- */
+h1, h1.title, h1.title_lcolor, .titleBar {
+    color: #014ecb;
+    border-bottom: 2px solid #0766f1;
+    padding-bottom: 4px;
+}
+h2 {
+    color: #014ecb;
+}
+
+/* --- Botones: azul de marca, texto blanco, sin gradiente navbar.gif --- */
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+button,
+.btn,
+.btn-primary {
+    background: #014ecb !important;
+    background-image: none !important;
+    border: 1px solid #002fff !important;
+    color: #ffffff !important;
+    font-size: 9pt;
+    border-radius: 4px !important;
+    padding: 4px 12px;
+    cursor: pointer;
+}
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+button:hover,
+btn:hover,
+.btn:hover,
+.btn-primary:hover {
+    background: #0766f1 !important;
+    background-image: none !important;
+    border-color: #014ecb !important;
+    color: #ffffff !important;
+}
+input[type="button"]:active,
+input[type="submit"]:active,
+input[type="reset"]:active,
+button:active,
+.btn:active,
+.btn-primary:active {
+    background: #002fff !important;
+    border-color: #002fff !important;
+}
+
+/* --- Campos de formulario: fondo claro, borde de marca, foco azul --- */
+input[type="text"],
+input[type="password"],
+select,
+textarea {
+    background: #ffffff !important;
+    background-image: none !important;
+    border: 1px solid #9db8d8 !important;
+    border-radius: 3px;
+    padding: 3px 6px;
+}
+input[type="text"]:focus,
+input[type="password"]:focus,
+select:focus,
+textarea:focus {
+    background: #ffffff !important;
+    border: 1px solid #014ecb !important;
+    box-shadow: 0 0 3px rgba(1,78,203,0.4);
+    outline: none;
+}
+
+/* --- Tablas: encabezados azul de marca, texto blanco --- */
+table.common th,
+table.simple th,
+table.simple_tableruler th,
+table.mainTable th,
+table.link_and_exec th {
+    background: #014ecb !important;
+    background-image: none !important;
+    color: #ffffff !important;
+    border: 1px solid #002fff !important;
+}
+table.common caption,
+table.simple caption,
+table.simple_tableruler caption,
+table.smallGrey caption,
+table.mainTable caption {
+    background: #436bb3 !important;
+    background-image: none !important;
+    color: #ffffff !important;
+    border: 1px solid #014ecb !important;
+}
+table.simple_tableruler tr:hover,
+table.tableruler tbody tr:hover {
+    background-color: #d9e6f5 !important;
+}
+table.common,
+table.simple,
+table.simple_tableruler,
+table.mainTable,
+table.link_and_exec {
+    border-color: #014ecb;
+}
+
+/* --- Paneles extjs (usados en varias páginas) --- */
+.x-panel-header {
+    background: #014ecb !important;
+    background-image: none !important;
+    color: #ffffff !important;
+}
+.x-panel-title {
+    color: #ffffff !important;
+}
+
+/* --- Definiciones de formulario modernas (fieldset/legend) --- */
+fieldset {
+    border: 1px solid #9db8d8 !important;
+}
+legend {
+    color: #014ecb !important;
+    font-weight: bold;
+}
+
+/* --- Títulos de listado grupo de botones --- */
+.groupBtn h2 {
+    color: #014ecb;
+}
+
+/* --- Links de página --- */
+a:not(.btn-primary) {
+    color: #014ecb;
+}
+a:not(.btn-primary):hover {
+    color: #002fff;
+}
+.group-btn > a, .vertical_menu a {
+    color: #014ecb;
+}
+/* ----- END ------------------------------------------------------------------------- */
