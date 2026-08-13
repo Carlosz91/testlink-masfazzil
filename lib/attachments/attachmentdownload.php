@@ -9,6 +9,7 @@
  *
  */
 @ob_end_clean();
+@ob_start();
 require_once('../../config.inc.php');
 require_once('../functions/common.php');
 require_once('../functions/attachments.inc.php');
