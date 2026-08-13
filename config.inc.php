@@ -2031,8 +2031,8 @@ $g_prefix_name_for_copy = strftime("%Y%m%d-%H:%M:%S", time());
  *        ON SAME FOLDER where original template is. 
  * See example below        
  */
-$g_tpl = array('inc_exec_controls' => 'inc_exec_img_controls.tpl');
-//$g_tpl = array('inc_exec_controls' => 'inc_exec_controls.tpl');
+$g_tpl = array('inc_exec_controls' => 'inc_exec_controls.tpl');
+//$g_tpl = array('inc_exec_controls' => 'inc_exec_img_controls.tpl');
 $g_tpl['login'] = 'login/login-model-marcobiedermann.tpl'; 
 
 // Example 
