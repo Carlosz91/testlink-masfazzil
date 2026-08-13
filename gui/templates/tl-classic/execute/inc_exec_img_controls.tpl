@@ -105,10 +105,10 @@ Author : franciscom
                          id="hidden-submit-button"></button>
                  {foreach key=kode item=ikval from=$gui->execStatusIcons}
                    {$in = $ikval.img}
-                   <img src="{$tlImages.$in}" title="{$ikval.title}"
-                        name="fastExec{$kode}[{$tcversion_id}]"
+                   <button type="button" class="btn btn-primary" name="fastExec{$kode}[{$tcversion_id}]"
                         id="fastExec{$kode}_{$tcversion_id}"
-                        onclick="javascript:saveExecStatus({$tcvID},'{$kode}');">&nbsp;
+                        title="{$ikval.title}"
+                        onclick="javascript:saveExecStatus({$tcvID},'{$kode}');">{$ikval.title}</button>&nbsp;
                  {/foreach}  
                  <br />
                  <br />
@@ -117,10 +117,10 @@ Author : franciscom
                                       id="save_and_next" value="0">
                  {foreach key=kode item=ikval from=$gui->execStatusIconsNext}
                    {$in = $ikval.img}
-                   <img src="{$tlImages.$in}" title="{$ikval.title}"
-                        name="fastExecNext{$kode}[{$tcversion_id}]"
+                   <button type="button" class="btn btn-primary" name="fastExecNext{$kode}[{$tcversion_id}]"
                         id="fastExecNext{$kode}_{$tcversion_id}"
-                        onclick="javascript:saveExecStatus({$tcvID},'{$kode}','',1);">&nbsp;
+                        title="{$ikval.title}"
+                        onclick="javascript:saveExecStatus({$tcvID},'{$kode}','',1);">{$ikval.title}</button>&nbsp;
                  {/foreach}  
                  <br />
                  <br />
