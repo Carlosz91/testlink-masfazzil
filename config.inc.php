@@ -1532,7 +1532,7 @@ $g_repositoryType = TL_REPOSITORY_TYPE_FS;
  * Put it out of reach via web or configure access denied.
  *
  **/
-$g_repositoryPath = '/var/testlink/upload_area/';  /* unix example */
+$g_repositoryPath = TL_ABS_PATH . 'upload_area' . DIRECTORY_SEPARATOR;
 if (($upa = getenv('TESTLINK_UPLOAD_AREA'))) {
   $g_repositoryPath = trim($upa);
 }
