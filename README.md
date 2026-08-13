@@ -105,6 +105,36 @@ Desde la interfaz: **Administración → Asignar Roles a Usuarios**, o por SQL:
 UPDATE users SET role_id = 11 WHERE login = 'tester';
 ```
 
+### Campos custom en la pestaña Ejecutar Pruebas
+
+Se agregaron 3 campos custom vinculados a casos de prueba (tabla `custom_fields`,
+node_type `testcase` = 3) para replicar la pantalla de ejecución de la instancia
+origen:
+
+| name                | label                        | type | valores |
+|---------------------|------------------------------|------|---------|
+| `pruebas_de_tarifas`| Pruebas de Tarifas           | radio (9) | SI / NO |
+| `jira_id`           | Jira(ID)                     | string (0) | texto libre |
+| `fallo_celula`      | Fallo será atendido en Célula| radio (9) | SI / NO |
+
+SQL para replicarlos en otra instalación (los `id` de la tabla `custom_fields` se
+generan con `auto_increment`; usar los ids que resulten en los INSERTs de las
+tablas de vínculo):
+
+```sql
+INSERT INTO custom_fields (name, label, type, possible_values, show_on_design,
+                           enable_on_design, show_on_execution, enable_on_execution)
+VALUES
+('pruebas_de_tarifas', 'Pruebas de Tarifas', 9, 'SI\nNO', 1, 1, 1, 1),
+('jira_id', 'Jira(ID)', 0, '', 1, 1, 1, 1),
+('fallo_celula', 'Fallo será atendido en Célula', 9, 'SI\nNO', 1, 1, 1, 1);
+
+-- Reemplazar <id> por los ids generados arriba
+INSERT INTO cfield_node_types (field_id, node_type_id) VALUES (<id>, 3);
+INSERT INTO cfield_testprojects (field_id, testproject_id, display_order, location, active)
+VALUES (<id>, 1, <id>, 1, 1);
+```
+
 ## Cambios de base de datos (no versionados)
 
 El repositorio solo contiene código. Las personalizaciones que viven en MySQL **no se
