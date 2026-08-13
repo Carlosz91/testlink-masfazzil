@@ -60,12 +60,6 @@ Author : franciscom
 
     <tr>
       <td colspan="{$tableColspan}" style="text-align: center;"> 
-      <b>{$args_labels.partialExecNoAttachmentsWarning}</b>
-      </td>
-    <tr>
-
-    <tr>
-      <td colspan="{$tableColspan}" style="text-align: center;"> 
        <button class="btn btn-primary" name="saveStepsPartialExec"
          id="saveStepsPartialExec" type="submit">{$args_labels.saveStepsForPartialExec}</button>
       </td>
