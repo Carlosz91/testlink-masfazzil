@@ -1516,7 +1516,7 @@ $tlCfg->attachments->allowed_files = 'doc,xls,gif,png,jpg,xlsx,csv';
  * NO CHECK if -> $g_attachments->allowed_filenames_regexp = '';
  *
  */
-$tlCfg->attachments->allowed_filenames_regexp = '/^[a-zA-Z0-9_-]{1,20}\.[a-zA-Z0-9]{1,10}$/';
+$tlCfg->attachments->allowed_filenames_regexp = '/^[a-zA-Z0-9 _.\-()]{1,100}\.[a-zA-Z0-9]{1,10}$/';
 
 
 /** the type of the repository can be database or filesystem
