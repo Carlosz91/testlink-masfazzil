@@ -40,7 +40,46 @@ Instancia local de TestLink 1.9.20 (XAMPP / PHP 7.4 / MySQL) adaptada con la ide
 - Logos en `gui/themes/default/images/` (`masfazzil-logotipo.png`, `masfazzil-logotipo-blanco.png`, `favicon-masfazzil.png`).
 - Layout de la barra de navegación en `gui/templates/tl-classic/navBar.tpl` y `gui/themes/default/css/frame.css`.
 
+## Cambios de base de datos (no versionados)
+
+El repositorio solo contiene código. Las personalizaciones que viven en MySQL **no se
+clonean** y hay que aplicarlas manualmente en cada instalación.
+
+- **Rol `analista senior`**: se le habilitó la gestión completa de planes de prueba
+  copiando los mismos permisos que tiene el rol `admin` (53 entradas en `role_rights`),
+  lo que hace aparecer todas las opciones del bloque "Current Test Plan" en
+  `mainPage.php`.
+
+Consulta para replicarlo (como usuario con credenciales de la BD):
+
+```sql
+-- En la otra PC, asociar al rol analista senior los mismos permisos que admin
+INSERT IGNORE INTO role_rights (role_id, right_id)
+SELECT 11, right_id FROM role_rights WHERE role_id = 8;
+
+-- Verificar
+SELECT COUNT(*) FROM role_rights WHERE role_id IN (8, 11);
+```
+
+### Instalar en otra PC
+
+**Opción A – llevar la base completa** (recomendada si ya tenés datos/proyectos):
+
+```bash
+# En la PC origen
+mysqldump -u <usuario> -p<password> testlink > testlink.sql
+
+# En la PC destino, dentro de MySQL
+mysql -u <usuario> -p<password> testlink < testlink.sql
+```
+
+**Opción B – partir de cero**: clonar el repo, crear la BD vacía y reproducir los
+cambios (los permisos del SQL de arriba y las cuentas de usuario que necesites).
+
 ## Notas
 
 - Entorno: Windows, XAMPP (Apache + MySQL), PHP 7.3.
 - Cuenta de pruebas local: `tester` / `Tester2026@`.
+- El fix de mojibake en `locale/es_ES/strings.txt` (doble codificación UTF-8) **sí** está
+  versionado; al clonar ya viene corregido, no hace falta reaplicarlo.
+  Backup local: `locale/es_ES/strings.txt.bak-doble-enc` (no se sube al repo).
