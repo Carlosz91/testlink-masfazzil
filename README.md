@@ -125,9 +125,9 @@ tablas de vínculo):
 INSERT INTO custom_fields (name, label, type, possible_values, show_on_design,
                            enable_on_design, show_on_execution, enable_on_execution)
 VALUES
-('pruebas_de_tarifas', 'Pruebas de Tarifas', 9, 'SI|NO', 1, 1, 1, 1),
-('jira_id', 'Jira(ID)', 0, '', 1, 1, 1, 1),
-('fallo_celula', 'Fallo será atendido en Célula', 9, 'SI|NO', 1, 1, 1, 1);
+('pruebas_de_tarifas', 'Pruebas de Tarifas', 9, 'SI|NO', 0, 0, 1, 1),
+('jira_id', 'Jira(ID)', 0, '', 0, 0, 1, 1),
+('fallo_celula', 'Fallo será atendido en Célula', 9, 'SI|NO', 0, 0, 1, 1);
 
 -- Reemplazar <id> por los ids generados arriba
 INSERT INTO cfield_node_types (field_id, node_type_id) VALUES (<id>, 3);
