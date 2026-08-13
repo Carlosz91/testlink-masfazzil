@@ -40,6 +40,71 @@ Instancia local de TestLink 1.9.20 (XAMPP / PHP 7.4 / MySQL) adaptada con la ide
 - Logos en `gui/themes/default/images/` (`masfazzil-logotipo.png`, `masfazzil-logotipo-blanco.png`, `favicon-masfazzil.png`).
 - Layout de la barra de navegación en `gui/templates/tl-classic/navBar.tpl` y `gui/themes/default/css/frame.css`.
 
+## Roles y permisos
+
+TestLink maneja permisos por rol: un usuario tiene **un solo rol** (columna
+`role_id` en `users`) y cada rol tiene asociados derechos en la tabla
+`role_rights` (un role_id → muchos right_id). La interfaz muestra/oculta opciones
+según los `right_id` que tenga el rol del usuario logueado.
+
+Roles definidos en esta instalación (tabla `roles`):
+
+| id  | rol              | Uso                                                    |
+|-----|------------------|--------------------------------------------------------|
+| 1-5 | `reserved` / `guest` | Roles del sistema TestLink (no tocar)              |
+| 6   | `senior tester`   | Ejecuta pruebas, ve reportes                           |
+| 7   | `tester`          | Ejecuta y registra resultados                          |
+| 8   | `admin`           | Acceso total al sistema (53 derechos)                  |
+| 9   | `leader`          | Coordina planes y equipos                              |
+| 10  | `analista`        | Rol custom: diseño de casos (sin gestión de planes)    |
+| 11  | `analista senior` | Rol custom: gestión completa de planes de prueba       |
+
+> El rol `analista senior` (id 11) fue creado con **los mismos 53 derechos que
+> `admin`** (ver sección [Cambios de base de datos](#cambios-de-base-de-datos-no-versionados)),
+> lo que hace aparecer todas las opciones del bloque "Current Test Plan"
+> (gestión de planes, builds, hitos, ejecución, métricas, plataformas, etc.)
+> en `mainPage.php`.
+
+Cuentas creadas (tabla `users`):
+
+| login   | password    | rol asignado    |
+|---------|-------------|-----------------|
+| `admin` | (la del instalador) | `admin`   |
+| `tester`| `Tester2026@` | `analista senior` |
+
+### Consultar / modificar permisos
+
+```sql
+-- Ver todos los roles
+SELECT id, description FROM roles;
+
+-- Ver a qué rol pertenece cada usuario
+SELECT u.id, u.login, r.description AS role
+FROM users u JOIN roles r ON r.id = u.role_id;
+
+-- Ver cuántos derechos tiene cada rol
+SELECT r.id, r.description, COUNT(rr.right_id) AS permisos
+FROM roles r
+LEFT JOIN role_rights rr ON rr.role_id = r.id
+GROUP BY r.id;
+
+-- Ver los derechos de un rol en particular (p. ej. analista senior = 11)
+SELECT rt.id, rt.description
+FROM role_rights rr
+JOIN rights rt ON rt.id = rr.right_id
+WHERE rr.role_id = 11
+ORDER BY rt.id;
+```
+
+### Asignar un rol a un usuario
+
+Desde la interfaz: **Administración → Asignar Roles a Usuarios**, o por SQL:
+
+```sql
+-- Cambiar el rol del usuario con login 'tester' a analista senior (11)
+UPDATE users SET role_id = 11 WHERE login = 'tester';
+```
+
 ## Cambios de base de datos (no versionados)
 
 El repositorio solo contiene código. Las personalizaciones que viven en MySQL **no se
