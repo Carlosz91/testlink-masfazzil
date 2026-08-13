@@ -57,13 +57,6 @@ Author : franciscom
                ghost_control=false
                add_exec_info=$tlCfg->exec_cfg->steps_exec
                steps=$args_tc_exec.steps}
-
-    <tr>
-      <td colspan="{$tableColspan}" style="text-align: center;"> 
-       <button class="btn btn-primary" name="saveStepsPartialExec"
-         id="saveStepsPartialExec" type="submit">{$args_labels.saveStepsForPartialExec}</button>
-      </td>
-    <tr>
     {/if}
 
     <tr> <td colspan="{$tableColspan}"> &nbsp; </td></tr>
