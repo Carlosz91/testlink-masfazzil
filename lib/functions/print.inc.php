@@ -620,7 +620,7 @@ function renderHTMLHeader($title,$base_href,$doc_type,$jsSet=null)
   $output .= '<meta http-equiv="Content-Type" content="text/html; charset=' . config_get('charset') . '"/>';
 
   $output .= '<title>' . htmlspecialchars($title). "</title>\n";
-  $output .= '<link type="text/css" rel="stylesheet" href="'. $cssFile ."\" />\n";
+  $output .= '<link type="text/css" rel="stylesheet" href="'. $cssFile . '?v=2' ."\" />\n";
   
   // way to add CSS directly to the exported file (not used - test required)
   // $docCss = file_get_contents(TL_ABS_PATH . $docCfg->css_template);

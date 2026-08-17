@@ -150,3 +150,15 @@ td.labelHolder {
 	background:     	#EEE;
 	text-align:			left;
 }
+
+/* Scale images to fit the printable area (fixes clipped screenshots) */
+/* Tables must also be constrained: auto-width tables grow to the image
+   natural size (e.g. 1920px) and overflow the page, so max-width:100%
+   on the img alone resolves against a cell as wide as the image itself. */
+table {
+	max-width: 100% !important;
+}
+img {
+	max-width: 100% !important;
+	height: auto !important;
+}
