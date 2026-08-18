@@ -1078,14 +1078,19 @@ $tlCfg->exec_cfg->simple_tester_roles=array(TL_ROLES_TESTER);
 // all: all test cases.
 // assigned_to_me: test cases assigned to logged user.
 // assigned_to_me_or_free: test cases assigned to logged user or not assigned
-$tlCfg->exec_cfg->view_mode->tester='assigned_to_me';
+// FIX(2026-08-18): was 'assigned_to_me'. With no test case assignments on the
+// plan, the execution tree rendered EMPTY for tester (assigned_to filter forced
+// to the logged user), so "Test Execution" showed nothing.
+$tlCfg->exec_cfg->view_mode->tester='all';
 
 // Filter Test cases a user with tester role can EXECUTE depending on
 // test execution assignment.
 // all: all test cases.
 // assigned_to_me: test cases assigned to logged user.
 // assigned_to_me_or_free: test cases assigned to logged user or not assigned
-$tlCfg->exec_cfg->exec_mode->tester='assigned_to_me';
+// FIX(2026-08-18): was 'assigned_to_me'. Same reason as view_mode: without
+// assignments, tester could see but never execute (can_be_executed=0).
+$tlCfg->exec_cfg->exec_mode->tester='all';
 
 
 // How to set defaut values for execution fields (standard & custom) 
