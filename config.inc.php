@@ -1509,7 +1509,9 @@ $tlCfg->attachments->access_string = "[*]";
  * Files that are allowed.  Separate items by commas.
  * eg. 'doc,xls,gif,png,jpg'
  */
-$tlCfg->attachments->allowed_files = 'doc,xls,gif,png,jpg,xlsx,csv';
+// FIX(2026-08-18): added 'jpeg'. WhatsApp images use .jpeg and the check in
+// tlAttachmentRepository rejects any extension outside this list.
+$tlCfg->attachments->allowed_files = 'doc,xls,gif,png,jpg,jpeg,xlsx,csv';
 
 
 /**
