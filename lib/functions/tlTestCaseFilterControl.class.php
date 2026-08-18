@@ -1156,7 +1156,9 @@ class tlTestCaseFilterControl extends tlFilterControl {
       $this->testplan_mgr = new testplan($this->db);
     }
 
-    $tplan_id = $this->settings['setting_testplan']['selected'];
+    // FIX(2026-08-18): intval() guarantees the SQL below never gets a null/empty
+    // testplan id (which produced "WHERE testplan_id = " -> DB syntax error).
+    $tplan_id = intval($this->settings['setting_testplan']['selected']);
 
     switch( $this->mode ) {
       case 'plan_mode':
@@ -1236,11 +1238,32 @@ class tlTestCaseFilterControl extends tlFilterControl {
     }
 
     // now load info from session
-    $info = $this->testplan_mgr->get_by_id($_SESSION['testplanID']);
-    $this->args->testplan_name = $info['name'];
-    $this->args->testplan_id = $info['id'];
-    $this->args->{$key} = $info['id'];
-    $this->settings[$key]['selected'] = $info['id'];
+    // FIX(2026-08-18): two bugs fixed here.
+    // 1) With no testplan in session, get_by_id(null) returned null and 'selected'
+    //    stayed null, making init_setting_build() generate a broken "WHERE testplan_id = "
+    //    query (DB syntax error) that killed execNavigator.php.
+    // 2) The plan picked in the combobox (REQUEST) was ignored when there was no prior
+    //    session selection, so the selection never persisted and execution aborted.
+    $testplan_id = intval($this->args->{$key});          // REQUEST wins (combobox)
+    if ($testplan_id <= 0) {
+      $testplan_id = isset($_SESSION['testplanID']) ? intval($_SESSION['testplanID']) : 0;
+    }
+    if ($testplan_id > 0) {
+      // persist selection into session (validates user access to the plan)
+      foreach ($testplans as $plan) {
+        if ($plan['id'] == $testplan_id) {
+          setSessionTestPlan($plan);
+          break;
+        }
+      }
+      $info = $this->testplan_mgr->get_by_id($testplan_id);
+      $this->args->testplan_name = isset($info['name']) ? $info['name'] : '';
+    } else {
+      $this->args->testplan_name = '';
+    }
+    $this->settings[$key]['selected'] = $testplan_id;
+    $this->args->{$key} = $testplan_id;
+    $this->args->testplan_id = $testplan_id;
 
     // Final filtering based on mode:
     // Now get all selectable testplans for the user to display.
